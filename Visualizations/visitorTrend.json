@@ -1,0 +1,12 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Tourist Arrivals" },
+    "data": {
+    "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/visitorTrend.csv"
+    },
+    "mark": "bar",
+    "encoding": {
+    "x": { "field": "year" },
+    "y": { "field": "visitor_num_millions" }
+    }
+}
