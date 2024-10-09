@@ -1,12 +1,18 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Tourist Arrivals" },
+    "title": { "text": "Domestic Visitors (million)" },
     "data": {
     "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/visitorTrend.csv"
     },
+    "transform": [
+    {
+      "calculate": "datum[visitor_num_thousands / 1000",
+      "as": "visitor_num_millions"
+    }
+  ],
     "mark": "bar",
     "encoding": {
-    "x": { "field": "year" },
-    "y": { "field": "visitor_num_millions" }
+    "x": { "field": "year", "type": "nominal", "title":null },
+    "y": { "field": "visitor_num_millions", "type": "quantitative", "title":null }
     }
 }
