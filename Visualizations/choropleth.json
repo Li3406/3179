@@ -1,0 +1,16 @@
+{
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "width": 800,
+    "height": 600,
+    "projection": {
+      "type": "mercator"
+    },
+    "data": [
+    {
+      "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/malaysia.json",
+      "format": {
+        "type": "topojson"
+      }
+    }
+  ]
+}
