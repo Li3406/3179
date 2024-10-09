@@ -1,17 +1,17 @@
-state,year,visitor_num_thousands
-Johor,2023,15805
-Kedah,2023,13444
-Kelantan,2023,7549
-Melaka,2023,15559
-Negeri Sembilan,2023,14959
-Pahang,2023,16456
-Pulau Pinang,2023,13128
-Perak,2023,17108
-Perlis,2023,1951
-Selangor,2023,27579
-Terengganu,2023,11761
-Sabah,2023,16080
-Sarawak,2023,17901
-W.P. Kuala Lumpur,2023,22233
-W.P. Labuan,2023,331
-W.P. Putrajaya,2023,1900
+state,visitor_num_thousands
+Johor,15805
+Kedah,13444
+Kelantan,7549
+Malacca,15559
+Negeri Sembilan,14959
+Pahang,16456
+Penang,13128
+Perak,17108
+Perlis,1951
+Selangor,27579
+Terengganu,11761
+Sabah,16080
+Sarawak,17901
+Kuala Lumpur,22233
+Labuan,331
+Putrajaya,1900
