@@ -1,16 +1,25 @@
 {
-    "$schema": "https://vega.github.io/schema/vega/v5.json",
-    "width": 800,
-    "height": 600,
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "title": "[To Write]",
+    "width": "container",
+    "height": 450,
     "projection": {
       "type": "mercator"
     },
-    "data": [
-    {
-      "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/malaysia.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/malaysiaStates.json",
       "format": {
-        "type": "topojson"
+        "type": "topojson",
+        "feature": "MYSADM1gbOpen"
       }
-    }
-  ]
-}
+    },
+    "layer": [
+      {
+        "mark": {
+          "type": "geoshape",
+          "fill": "gainsboro",
+          "stroke": "white"
+        }
+      }
+    ]
+  }
