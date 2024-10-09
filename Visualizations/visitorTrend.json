@@ -1,18 +1,60 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Domestic Visitors (million)" },
-    "data": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": { "text": "Domestic Visitors (million)" },
+  "data": {
     "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/visitorTrend.csv"
-    },
-    "transform": [
+  },
+  "transform": [
     {
-      "calculate": "datum[visitor_num_thousands / 1000",
+      "calculate": "datum['visitor_num_thousands'] / 1000",
       "as": "visitor_num_millions"
     }
   ],
-    "mark": "bar",
-    "encoding": {
-    "x": { "field": "year", "type": "nominal", "title":null },
-    "y": { "field": "visitor_num_millions", "type": "quantitative", "title":null }
+
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "nominal",
+          "title": null
+        },
+        "y": {
+          "field": "visitor_num_millions",
+          "type": "quantitative",
+          "axis": {
+            "title": "Visitor Numbers (millions)",
+            "titleColor": "blue"
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color": "red"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "nominal",
+          "title": null
+        },
+        "y": {
+          "field": "percentage_change",
+          "type": "quantitative",
+          "axis": {
+            "title": "Percentage Change (%)",
+            "titleColor": "red"
+          }
+        }
+      }
     }
+  ],
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  }
 }
