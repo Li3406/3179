@@ -10,17 +10,17 @@
   },
   "encoding": {
     "tooltip": [
-      {"field": "properties.shapeName", "type": "nominal", "title": "State:"},
+      {"field": "properties.shapeName", "type": "nominal", "title": "State"},
       {
         "field": "visitor_num_thousands",
         "type": "quantitative",
-        "title": "Number of visitors ('000):",
+        "title": "Number of visitors ('000)",
         "format": ",.0f"
       },
       {
         "field": "percentage_total",
         "type": "quantitative",
-        "title": "Percent of visitors:"
+        "title": "Percent of visitors"
       }
     ]
   },

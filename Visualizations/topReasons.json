@@ -1,27 +1,38 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": { "text": "Domestic Visitors (million)" },
-  "width": 500,
-  "height": 250,
-  "data": {
-    "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/travelPurpose.csv"
-  },
-  "mark": { "type": "arc", "innerRadius": 50 },
-  "encoding": {
-    "theta": { "field": "percentage", "type": "quantitative" },
-    "color": {
-      "field": "purpose",
-      "type": "nominal",
-      "scale": { "scheme": "paired" }
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Icons with percentages for each travel purpose.",
+    "height": 200,
+      "width": 650,
+    "data": {
+      "values": [
+        {"purpose": "Visiting relatives & friends", "percentage": 33.6, "icon": "👨‍👩‍👧"},
+        {"purpose": "Shopping", "percentage": 32.6, "icon": "🛍️"},
+        {"purpose": "Holiday/ leisure/ relaxation", "percentage": 17.9, "icon": "🏖️"},
+        {"purpose": "Incentive travel/ others", "percentage": 5.4, "icon": "✈️"},
+        {"purpose": "Entertainment/ attending special event/ sports", "percentage": 4.8, "icon": "🎉"}
+      ]
     },
-    "order": {
-      "field": "percentage",
-      "type": "quantitative",
-      "sort": "ascending"
+    "mark": {
+      "type": "text",
+      "dy": -20,
+      "align": "center",
+      "baseline": "middle",
+      "fontSize": 50
     },
-    "tooltip": [
-      { "field": "purpose", "type": "nominal", "title": "Purpose:" },
-      { "field": "percentage", "type": "quantitative", "title": "Percentage" }
+    "encoding": {
+      "text": {"field": "icon"},
+      "tooltip": {"field": "purpose"},
+      "x": {"field": "purpose", "axis": {"labelAngle": -45}},
+      "y": {"value": 100}
+    },
+    "layers": [
+      {
+        "mark": {"type": "text", "dy": 20, "fontSize": 12},
+        "encoding": {
+          "text": {"field": "percentage", "type": "quantitative", "format": ".1f"},
+          "x": {"field": "purpose", "axis": {"labelAngle": -45}}
+        }
+      }
     ]
   }
-}
+  

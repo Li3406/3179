@@ -32,11 +32,11 @@
         "x": {"field": "year", "type": "nominal", "title": null},
         "y": {"field": "visitor_num_millions", "type": "quantitative"},
         "tooltip": [
-          {"field": "year", "type": "nominal", "title": "Year:"},
+          {"field": "year", "type": "nominal", "title": "Year"},
           {
             "field": "visitor_num_thousands",
             "type": "quantitative",
-            "title": "Number of visitors ('000):",
+            "title": "Number of visitors ('000)",
             "format": ",.0f"
           }
         ]
