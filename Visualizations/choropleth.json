@@ -1,16 +1,19 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Visitor Distribution Across States",
+  "title": {
+    "text": "Visitor Distribution Across States",
+    "fontSize": 16
+  },
   "width": 650,
   "height": 450,
-  "projection": {"type": "mercator"},
+  "projection": { "type": "mercator" },
   "data": {
     "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/malaysiaStates.json",
-    "format": {"type": "topojson", "feature": "MYSADM1gbOpen"}
+    "format": { "type": "topojson", "feature": "MYSADM1gbOpen" }
   },
   "encoding": {
     "tooltip": [
-      {"field": "properties.shapeName", "type": "nominal", "title": "State"},
+      { "field": "properties.shapeName", "type": "nominal", "title": "State" },
       {
         "field": "visitor_num_thousands",
         "type": "quantitative",
@@ -25,7 +28,7 @@
     ]
   },
   "layer": [
-    {"mark": {"type": "geoshape", "fill": "gainsboro", "stroke": "white"}},
+    { "mark": { "type": "geoshape", "fill": "gainsboro", "stroke": "white" } },
     {
       "transform": [
         {
@@ -39,17 +42,22 @@
           }
         }
       ],
-      "mark": {"type": "geoshape"},
+      "mark": { "type": "geoshape" },
       "encoding": {
         "color": {
           "field": "percentage_total",
           "scale": {
             "type": "quantile",
-            "scheme": {"name": "greenblue", "count": 8}
+            "scheme": { "name": "greenblue", "count": 8 }
           },
-          "legend": {"title": "Percent of visitors"}
+          "legend": { "title": ["Proportion of", "visitors"] }
         }
       }
     }
-  ]
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
 }
