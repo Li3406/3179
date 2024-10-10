@@ -1,6 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text": "Domestic Visitors (million)"},
   "width": "container",
   "height": 250,
   "data": {
@@ -17,22 +16,27 @@
     {
       "mark": "line",
       "encoding": {
-        "x": {"field": "year", "type": "nominal", "title": null},
+        "x": {
+          "field": "year",
+          "type": "nominal",
+          "title": null,
+          "axis": { "labelAngle": 360 }
+        },
         "y": {
           "field": "visitor_num_millions",
           "type": "quantitative",
-          "axis": {"title": null, "titleColor": "blue"},
-          "scale": {"domain": [0, 300]}
+          "axis": { "title": "Number of visitors (million)" },
+          "scale": { "domain": [0, 300] }
         }
       }
     },
     {
       "mark": "circle",
       "encoding": {
-        "x": {"field": "year", "type": "nominal", "title": null},
-        "y": {"field": "visitor_num_millions", "type": "quantitative"},
+        "x": { "field": "year", "type": "nominal", "title": null },
+        "y": { "field": "visitor_num_millions", "type": "quantitative" },
         "tooltip": [
-          {"field": "year", "type": "nominal", "title": "Year"},
+          { "field": "year", "type": "nominal", "title": "Year" },
           {
             "field": "visitor_num_thousands",
             "type": "quantitative",
