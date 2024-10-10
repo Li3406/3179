@@ -1,25 +1,31 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "[To Write]",
+  "title": "Visitor Distribution Across Malaysian States",
   "width": "container",
   "height": 450,
-  "projection": { "type": "mercator" },
+  "projection": {"type": "mercator"},
   "data": {
     "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/malaysiaStates.json",
-    "format": { "type": "topojson", "feature": "MYSADM1gbOpen" }
+    "format": {"type": "topojson", "feature": "MYSADM1gbOpen"}
   },
   "encoding": {
     "tooltip": [
-      { "field": "properties.shapeName", "type": "nominal", "title": "State:" },
+      {"field": "properties.shapeName", "type": "nominal", "title": "State:"},
       {
         "field": "visitor_num_thousands",
         "type": "quantitative",
-        "title": "Number of visitors ('000):"
+        "title": "Number of visitors ('000):",
+        "format": ",.0f"
+      },
+      {
+        "field": "percentage_total",
+        "type": "quantitative",
+        "title": "Percent of visitors:"
       }
     ]
   },
   "layer": [
-    { "mark": { "type": "geoshape", "fill": "gainsboro", "stroke": "white" } },
+    {"mark": {"type": "geoshape", "fill": "gainsboro", "stroke": "white"}},
     {
       "transform": [
         {
@@ -29,14 +35,19 @@
               "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/visitorByState2023.csv"
             },
             "key": "state",
-            "fields": ["visitor_num_thousands"]
+            "fields": ["percentage_total", "visitor_num_thousands"]
           }
         }
       ],
-      "mark": { "type": "geoshape" },
+      "mark": {"type": "geoshape"},
       "encoding": {
         "color": {
-          "field": "visitor_num_thousands"
+          "field": "percentage_total",
+          "scale": {
+            "type": "quantile",
+            "scheme": {"name": "greenblue", "count": 8}
+          },
+          "legend": {"title": "Percent of visitors"}
         }
       }
     }
