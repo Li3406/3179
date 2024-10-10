@@ -1,25 +1,44 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "[To Write]",
-    "width": "container",
-    "height": 450,
-    "projection": {
-      "type": "mercator"
-    },
-    "data": {
-      "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/malaysiaStates.json",
-      "format": {
-        "type": "topojson",
-        "feature": "MYSADM1gbOpen"
-      }
-    },
-    "layer": [
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "[To Write]",
+  "width": "container",
+  "height": 450,
+  "projection": { "type": "mercator" },
+  "data": {
+    "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/malaysiaStates.json",
+    "format": { "type": "topojson", "feature": "MYSADM1gbOpen" }
+  },
+  "encoding": {
+    "tooltip": [
+      { "field": "properties.shapeName", "type": "nominal", "title": "State:" },
       {
-        "mark": {
-          "type": "geoshape",
-          "fill": "gainsboro",
-          "stroke": "white"
-        }
+        "field": "visitor_num_thousands",
+        "type": "quantitative",
+        "title": "Number of visitors ('000):"
       }
     ]
-  }
+  },
+  "layer": [
+    { "mark": { "type": "geoshape", "fill": "gainsboro", "stroke": "white" } },
+    {
+      "transform": [
+        {
+          "lookup": "properties.shapeName",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/visitorByState2023.csv"
+            },
+            "key": "state",
+            "fields": ["visitor_num_thousands"]
+          }
+        }
+      ],
+      "mark": { "type": "geoshape" },
+      "encoding": {
+        "color": {
+          "field": "visitor_num_thousands"
+        }
+      }
+    }
+  ]
+}

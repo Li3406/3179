@@ -1,17 +1,17 @@
-state,visitor_num_thousands
-Johor,15805
-Kedah,13444
-Kelantan,7549
-Malacca,15559
-Negeri Sembilan,14959
-Pahang,16456
-Penang,13128
-Perak,17108
-Perlis,1951
-Selangor,27579
-Terengganu,11761
-Sabah,16080
-Sarawak,17901
-Kuala Lumpur,22233
-Labuan,331
-Putrajaya,1900
+state,visitor_num_thousands,percentage_total
+Johor,15805,7.4
+Kedah,13444,6.3
+Kelantan,7549,3.5
+Malacca,15559,7.3
+Negeri Sembilan,14959,7.0
+Pahang,16456,7.7
+Penang,13128,6.1
+Perak,17108,8.0
+Perlis,1951,0.9
+Selangor,27579,12.9
+Terengganu,11761,5.5
+Sabah,16080,7.5
+Sarawak,17901,8.4
+Kuala Lumpur,22233,10.4
+Labuan,331,0.2
+Putrajaya,1900,0.9
