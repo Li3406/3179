@@ -1,8 +1,28 @@
-﻿visitor_expenditure,expenditure_2022,expenditure_2023,expenditure_percent_2022,expenditure_percent_2023
-Shopping,24939201.34,30842715,38.9,36.3
-Purchase of automotive fuel ,8839688.05,11226727,13.8,13.2
-Transport,4816659.27,5691081,7.5,6.7
-Food & beverage,9725150.45,13802774,15.2,16.3
-Accommodation,5956517.1,10653466,9.3,12.5
-Expenditure before the trip/package/ entrance fees/ tickets,2344749.94,3126434,3.7,3.7
-Other activities,2594989.73,3333225,4,3.9
+﻿visitor_expenditure,expenditure_2022,expenditure_2023,expenditure_percent_2022,expenditure_percent_2023,icon_pos
+Shopping,24939201.34,30842715,38.9,36.3,1
+Shopping,24939201.34,30842715,38.9,36.3,2
+Shopping,24939201.34,30842715,38.9,36.3,3
+Shopping,24939201.34,30842715,38.9,36.3,4
+Shopping,24939201.34,30842715,38.9,36.3,5
+Shopping,24939201.34,30842715,38.9,36.3,6
+Shopping,24939201.34,30842715,38.9,36.3,7
+Shopping,24939201.34,30842715,38.9,36.3,8
+Shopping,24939201.34,30842715,38.9,36.3,9
+Shopping,24939201.34,30842715,38.9,36.3,10
+Purchase of automotive fuel ,8839688.05,11226727,13.8,13.2,1
+Purchase of automotive fuel ,8839688.05,11226727,13.8,13.2,2
+Purchase of automotive fuel ,8839688.05,11226727,13.8,13.2,3
+Purchase of automotive fuel ,8839688.05,11226727,13.8,13.2,4
+Transport,4816659.27,5691081,7.5,6.7,1
+Transport,4816659.27,5691081,7.5,6.7,2
+Food & beverage,9725150.45,13802774,15.2,16.3,1
+Food & beverage,9725150.45,13802774,15.2,16.3,2
+Food & beverage,9725150.45,13802774,15.2,16.3,3
+Food & beverage,9725150.45,13802774,15.2,16.3,4
+Food & beverage,9725150.45,13802774,15.2,16.3,5
+Accommodation,5956517.1,10653466,9.3,12.5,1
+Accommodation,5956517.1,10653466,9.3,12.5,2
+Accommodation,5956517.1,10653466,9.3,12.5,3
+Accommodation,5956517.1,10653466,9.3,12.5,4
+Expenditure before the trip/package/ entrance fees/ tickets,2344749.94,3126434,3.7,3.7,1
+Other activities,2594989.73,3333225,4,3.9,1

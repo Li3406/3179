@@ -1,67 +1,78 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 500,
-    "height": 400,
-    "data": {
-      "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/expenditure.csv"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/expenditure.csv"
+  },
+  "transform": [
+    {
+      "calculate": "round(datum.expenditure_2023 / 3000000)",
+      "as": "icon_count"
+    }
+  ],
+  "mark": {
+    "type": "text",
+    "align": "center",
+    "baseline": "middle",
+    "fontSize": 25
+  },
+  "encoding": {
+    "x": {
+      "field": "icon_count",
+      "type": "quantitative",
+      "axis": null,
+      "stack": null
     },
-    "transform": [
-      {"calculate": "round(datum.expenditure_2023 / 3000000)", "as": "icon_count"}
-    ],
-    "mark": {
-      "type": "text",
-      "align": "center",
-      "baseline": "middle",
-      "fontSize": 20
+    "y": {
+      "field": "visitor_expenditure",
+      "type": "nominal",
+      "axis": { "title": null, "domain": false }
     },
-    "encoding": {
-      "x": {
-        "field": "icon_count",
-        "type": "quantitative",
-        "axis": {"title": null},
-        "stack": null
-      },
-      "y": {
+    "text": {
+      "condition": [
+        { "test": "datum.visitor_expenditure === 'Shopping'", "value": "🛒" },
+        {
+          "test": "datum.visitor_expenditure === 'Accommodation'",
+          "value": "🏠"
+        },
+        {
+          "test": "datum.visitor_expenditure === 'Food & beverage'",
+          "value": "🍽️"
+        },
+        { "test": "datum.visitor_expenditure === 'Transport'", "value": "🚗" },
+        {
+          "test": "datum.visitor_expenditure === 'Purchase of automotive fuel '",
+          "value": "⛽"
+        },
+        {
+          "test": "datum.visitor_expenditure === 'Expenditure before the trip/package/ entrance fees/ tickets'",
+          "value": "🎫"
+        }
+      ],
+      "value": "⚫"
+    },
+    "tooltip": [
+      {
         "field": "visitor_expenditure",
         "type": "nominal",
-        "axis": {"title": null}
+        "title": "Category"
       },
-      "text": {
-        "condition": [
-          {"test": "datum.visitor_expenditure === 'Shopping'", "value": "🛒"},
-          {
-            "test": "datum.visitor_expenditure === 'Accommodation'",
-            "value": "🏨"
-          },
-          {
-            "test": "datum.visitor_expenditure === 'Food & beverage'",
-            "value": "🍽️"
-          },
-          {"test": "datum.visitor_expenditure === 'Transport'", "value": "🚗"},
-          {
-            "test": "datum.visitor_expenditure === 'Purchase of automotive fuel '",
-            "value": "⛽"
-          }
-        ],
-        "value": "⚫"
+      {
+        "field": "expenditure_2022",
+        "type": "quantitative",
+        "title": "Expenditure 2022 ('000)"
       },
-      "tooltip": [
-        {"field": "visitor_expenditure", "type": "nominal", "title": "Category"},
-        {
-          "field": "expenditure_2022",
-          "type": "quantitative",
-          "title": "Expenditure 2022"
-        },
-        {
-          "field": "expenditure_2023",
-          "type": "quantitative",
-          "title": "Expenditure 2023"
-        },
-        {
-          "field": "icon_count",
-          "type": "quantitative",
-          "title": "Number of Icons"
-        }
-      ]
+      {
+        "field": "expenditure_2023",
+        "type": "quantitative",
+        "title": "Expenditure 2023 ('000)"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
     }
   }
+}
