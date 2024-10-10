@@ -9,3 +9,11 @@ body {
     padding: 70px;
     padding-top: 35px;
 }
+
+.vis-container {
+    width: 100%;
+  }
+
+  .description-right {
+    padding-left: 30px;
+  }
