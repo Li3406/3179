@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 600,
+  "width": 400,
   "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/expenditure.csv"
@@ -22,7 +22,7 @@
     "y": {
       "field": "visitor_expenditure",
       "type": "nominal",
-      "axis": { "title": null, "domain": false },
+      "axis": { "title": null, "domain": false, "labelLimit": 300 },
       "sort": [
         "Shopping",
         "Accommodation",
@@ -65,12 +65,14 @@
       {
         "field": "expenditure_2022",
         "type": "quantitative",
-        "title": "Expenditure 2022 ('000)"
+        "title": "Expenditure 2022 ('000)",
+        "format": ",.0f"
       },
       {
         "field": "expenditure_2023",
         "type": "quantitative",
-        "title": "Expenditure 2023 ('000)"
+        "title": "Expenditure 2023 ('000)",
+        "format": ",.0f"
       }
     ]
   },
