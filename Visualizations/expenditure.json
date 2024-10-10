@@ -1,16 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500,
+  "width": 600,
   "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/expenditure.csv"
   },
-  "transform": [
-    {
-      "calculate": "round(datum.expenditure_2023 / 3000000)",
-      "as": "icon_count"
-    }
-  ],
+  
   "mark": {
     "type": "text",
     "align": "center",
@@ -19,7 +14,7 @@
   },
   "encoding": {
     "x": {
-      "field": "icon_count",
+      "field": "icon_pos",
       "type": "quantitative",
       "axis": null,
       "stack": null
@@ -27,7 +22,16 @@
     "y": {
       "field": "visitor_expenditure",
       "type": "nominal",
-      "axis": { "title": null, "domain": false }
+      "axis": { "title": null, "domain": false },
+      "sort": [
+        "Shopping",
+        "Accommodation",
+        "Food & beverage",
+        "Transport",
+        "Purchase of automotive fuel ",
+        "Expenditure before the trip/ package/ entrance fees/ tickets",
+        "Other activities"
+      ]
     },
     "text": {
       "condition": [
@@ -46,7 +50,7 @@
           "value": "⛽"
         },
         {
-          "test": "datum.visitor_expenditure === 'Expenditure before the trip/package/ entrance fees/ tickets'",
+          "test": "datum.visitor_expenditure === 'Expenditure before the trip/ package/ entrance fees/ tickets'",
           "value": "🎫"
         }
       ],
