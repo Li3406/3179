@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 400,
-  "height": 400,
+  "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/expenditure.csv"
   },
@@ -16,7 +16,7 @@
     "x": {
       "field": "icon_pos",
       "type": "quantitative",
-      "axis": null,
+      "axis": { "title": "1 icon = 300,000,000 units", "domain": false, "labels": false, "ticks":false, "grid": false},
       "stack": null
     },
     "y": {
