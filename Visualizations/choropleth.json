@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Visitor Distribution Across Malaysian States",
+  "title": "Visitor Distribution Across States",
   "width": 700,
   "height": 450,
   "projection": {"type": "mercator"},
