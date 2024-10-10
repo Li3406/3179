@@ -1,6 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": { "text": "Domestic Visitors (million)" },
+  "title": {"text": "Domestic Visitors (million)"},
+  "width": 300,
+  "height": 250,
   "data": {
     "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/visitorTrend.csv"
   },
@@ -10,51 +12,35 @@
       "as": "visitor_num_millions"
     }
   ],
-
+  "encoding": {},
   "layer": [
     {
-      "mark": "bar",
+      "mark": "line",
       "encoding": {
-        "x": {
-          "field": "year",
-          "type": "nominal",
-          "title": null
-        },
+        "x": {"field": "year", "type": "nominal", "title": null},
         "y": {
           "field": "visitor_num_millions",
           "type": "quantitative",
-          "axis": {
-            "title": "Visitor Numbers (millions)",
-            "titleColor": "blue"
-          }
+          "axis": {"title": null, "titleColor": "blue"},
+          "scale": {"domain": [0, 300]}
         }
       }
     },
     {
-      "mark": {
-        "type": "line",
-        "color": "red"
-      },
+      "mark": "circle",
       "encoding": {
-        "x": {
-          "field": "year",
-          "type": "nominal",
-          "title": null
-        },
-        "y": {
-          "field": "percentage_change",
-          "type": "quantitative",
-          "axis": {
-            "title": "Percentage Change (%)",
-            "titleColor": "red"
+        "x": {"field": "year", "type": "nominal", "title": null},
+        "y": {"field": "visitor_num_millions", "type": "quantitative"},
+        "tooltip": [
+          {"field": "year", "type": "nominal", "title": "Year:"},
+          {
+            "field": "visitor_num_thousands",
+            "type": "quantitative",
+            "title": "Number of visitors ('000):",
+            "format": ",.0f"
           }
-        }
+        ]
       }
     }
-  ],
-  "resolve": {
-    "scale": {
-      "y": "independent"
-    }
-  }
+  ]
 }
