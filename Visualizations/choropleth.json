@@ -11,15 +11,15 @@
     "tooltip": [
       { "field": "properties.shapeName", "type": "nominal", "title": "State" },
       {
-        "field": "visitor_num_thousands",
+        "field": "visitor_num_millions",
         "type": "quantitative",
-        "title": "Number of visitors ('000)",
-        "format": ",.0f"
+        "title": "Visitors (million)",
+        "format": ",.1f"
       },
       {
         "field": "percentage_total",
         "type": "quantitative",
-        "title": "Percent of visitors"
+        "title": "Percent (%)"
       }
     ]
   },
@@ -36,9 +36,13 @@
             "key": "state",
             "fields": ["percentage_total", "visitor_num_thousands"]
           }
+        },
+        {
+          "calculate": "datum['visitor_num_thousands'] / 1000",
+          "as": "visitor_num_millions"
         }
       ],
-      "mark": { "type": "geoshape" },
+      "mark": { "type": "geoshape", "stroke":"black", "strokeWidth":1.2 },
       "encoding": {
         "color": {
           "field": "percentage_total",
@@ -46,7 +50,7 @@
             "type": "quantile",
             "scheme": { "name": "greenblue", "count": 8 }
           },
-          "legend": { "title": ["Proportion of", "visitors"] }
+          "legend": { "title": ["Percentage of", "visitors"] }
         }
       }
     }
