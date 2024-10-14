@@ -1,0 +1,67 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 400,
+    "height": 300,
+    "data": {
+      "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/expenditure.csv"
+    },
+  
+    "mark": {
+      "type": "text",
+      "align": "center",
+      "baseline": "middle",
+      "fontSize": 25
+    },
+    "encoding": {
+      "x": {
+        "field": "icon_pos",
+        "type": "quantitative",
+        "axis": { "title": "1 icon = 300,000,000 units", "domain": false, "labels": false, "ticks":false, "grid": false},
+        "stack": null
+      },
+      "y": {
+        "field": "percentage",
+        "type": "nominal",
+        "axis": { "title": null, "domain": false, "labelLimit": 300 },
+        "sort": [
+          "Visiting relatives & friends",
+          "Shopping",
+          "Holiday/ leisure/ relaxation",
+          "Incentive travel/ others",
+          "Entertainment/ attending special event/ sports"
+        ]
+      },
+      "text": {
+        "condition": [
+          { "test": "datum.purpose === 'Shopping'", "value": "🛒" },
+          {
+            "test": "datum.purpose === 'Visiting relatives & friends'",
+            "value": "🏠"
+          },
+          {
+            "test": "datum.purpose === 'Holiday/ leisure/ relaxation'",
+            "value": "🏖️"
+          },
+          { "test": "datum.purpose === 'Incentive travel/ others'", "value": "✈️" },
+          {
+            "test": "datum.purpose === 'Entertainment/ attending special event/ sports'",
+            "value": "🎉"
+          }
+        ],
+        "value": "⚫"
+      },
+      "tooltip": [
+        {
+          "field": "purpose",
+          "type": "nominal",
+          "title": "Category"
+        }
+      ]
+    },
+    "config": {
+      "view": {
+        "stroke": null
+      }
+    }
+  }
+  
