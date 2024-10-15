@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 275,
+  "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/visitorTrend.csv"
   },
@@ -25,26 +25,220 @@
         "y": {
           "field": "visitor_num_millions",
           "type": "quantitative",
-          "axis": { "title": "Number of visitors (million)" },
+          "axis": { "title": "Number of visitors (million)", "grid": false },
           "scale": { "domain": [0, 300] }
         }
       }
     },
     {
-      "mark": "circle",
+      "mark": { "type": "circle", "size": 100 },
       "encoding": {
         "x": { "field": "year", "type": "nominal", "title": null },
         "y": { "field": "visitor_num_millions", "type": "quantitative" },
+        "color": {
+          "condition": {
+            "test": "datum['year'] == 2020",
+            "value": "red"
+          },
+          "value": "steelblue"
+        },
         "tooltip": [
           { "field": "year", "type": "nominal", "title": "Year" },
           {
-            "field": "visitor_num_thousands",
+            "field": "visitor_num_millions",
             "type": "quantitative",
-            "title": "Number of visitors ('000)",
-            "format": ",.0f"
+            "title": "Visitors (millions)",
+            "format": ",.1f"
+          },
+          {
+            "field": "percentage_change",
+            "type": "quantitative",
+            "title": "Growth from Last Year (%)",
+            "format": ",.1f"
           }
         ]
       }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": 23
+      },
+      "encoding": {
+        "x": { "field": "year", "type": "nominal" },
+        "y": { "field": "visitor_num_millions", "type": "quantitative" },
+        "text": {
+          "condition": {
+            "test": "datum['year'] == 2020 || datum['year'] == 2021 || datum['year'] == 2022",
+            "field": "visitor_num_millions",
+            "type": "quantitative",
+            "format": ".1f"
+          },
+          "value": ""
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dy": -15
+      },
+      "encoding": {
+        "x": { "field": "year", "type": "nominal" },
+        "y": { "field": "visitor_num_millions", "type": "quantitative" },
+        "text": {
+          "condition": {
+            "test": "datum['year'] != 2020 && datum['year'] != 2021 && datum['year'] != 2022",
+            "field": "visitor_num_millions",
+            "type": "quantitative",
+            "format": ".1f"
+          },
+          "value": ""
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": -90,
+        "dy": 75
+      },
+      "encoding": {
+        "x": { "field": "year", "type": "nominal" },
+        "y": { "field": "visitor_num_millions", "type": "quantitative" },
+        "text": {
+          "condition": {
+            "test": "datum['year'] == 2018",
+            "value": [
+              "Malaysia enforced",
+              "",
+              "lockdowns and",
+              "travel restrictions."
+            ]
+          },
+          "value": ""
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "color": "red",
+        "fontWeight": "bold",
+        "dx": -89,
+        "dy": -2
+      },
+      "encoding": {
+        "x": { "field": "year", "type": "nominal" },
+        "y": { "field": "visitor_num_millions", "type": "quantitative" },
+        "text": {
+          "condition": {
+            "test": "datum['year'] == 2020",
+            "value": ["coronavirus disease"]
+          },
+          "value": ""
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "rect",
+        "fill": null,
+        "stroke": "red",
+        "strokeWidth": 1.5,
+        "width": 140,
+        "height": 75
+      },
+      "encoding": {
+        "x": { "value": 100 },
+        "y": { "value": 170 }
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "red"
+      },
+      "encoding": {
+        "x": { "field": "year", "type": "nominal" },
+        "y": { "field": "visitor_num_millions", "type": "quantitative" },
+        "x2": { "value": 170 }
+      },
+      "transform": [{ "filter": "datum['year'] == 2020" }]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight":"lighter",
+        "align": "left",
+        "x": 90,
+        "y": 235
+      },
+      "encoding": {
+        "text": {
+          "value": [
+            "Fully vaccinated residents",
+            "were allowed to travel",
+            "",
+            "starting on 11 October 2021."
+          ]
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight":"normal",
+        "color":"green",
+        "align": "left",
+        "x": 90,
+        "y": 235
+      },
+      "encoding": {
+        "text": {
+          "value": [
+            "",
+            "",
+            "freely within Malaysia",
+            ""
+          ]
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "rect",
+        "fill": null,
+        "stroke": "green",
+        "strokeWidth": 1.5,
+        "width": 170,
+        "height": 70
+      },
+      "encoding": {
+        "x": { "value": 160 },
+        "y": { "value": 255 }
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "green"
+      },
+      "encoding": {
+        "x": { "field": "year", "type": "nominal" },
+        "y": { "field": "visitor_num_millions", "type": "quantitative" },
+        "x2": { "value": 245 }
+      },
+      "transform": [{ "filter": "datum['year'] == 2021" }]
     }
-  ]
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
 }

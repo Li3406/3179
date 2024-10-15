@@ -48,7 +48,7 @@
           "field": "percentage_total",
           "scale": {
             "type": "quantile",
-            "scheme": { "name": "greens", "count": 10}
+            "scheme": { "name": "blues", "count": 10}
           },
           "legend": { "title": ["Percentage of", "visitors"] }
         }

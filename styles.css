@@ -23,6 +23,10 @@ body {
     padding-left: 30px;
 }
 
+.description-left {
+    padding-right: 30px;
+}
+
 .pure-g {
     margin-bottom: 15px;
 }
