@@ -7,23 +7,9 @@
     "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/malaysiaStates.json",
     "format": { "type": "topojson", "feature": "MYSADM1gbOpen" }
   },
-  "params": [
-    {
-      "name": "year_selection",
-      "value": 2023,
-      "bind": {
-        "input": "range",
-        "min": 2016,
-        "max": 2023,
-        "step": 1,
-        "name": "Year: "
-      }
-    }
-  ],
   "encoding": {
     "tooltip": [
       { "field": "properties.shapeName", "type": "nominal", "title": "State" },
-      { "field": "year", "type": "quantitative", "title": "Year" },
       {
         "field": "visitor_num_millions",
         "type": "quantitative",
@@ -45,17 +31,16 @@
           "lookup": "properties.shapeName",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/visitorByState.csv"
+              "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/visitorByState2023.csv"
             },
             "key": "state",
-            "fields": ["year", "percentage_total", "visitor_num_thousands"]
+            "fields": ["percentage_total", "visitor_num_thousands"]
           }
         },
         {
           "calculate": "datum['visitor_num_thousands'] / 1000",
           "as": "visitor_num_millions"
-        },
-        { "filter": "datum.year == year_selection" }
+        }
       ],
       "mark": { "type": "geoshape", "stroke": "black", "strokeWidth": 1.2 },
       "encoding": {
@@ -63,12 +48,16 @@
           "field": "percentage_total",
           "scale": {
             "type": "quantile",
-            "scheme": { "name": "blues", "count": 10 }
+            "scheme": { "name": "blues", "count": 10}
           },
           "legend": { "title": ["Percentage of", "visitors"] }
         }
       }
     }
   ],
-  "config": { "view": { "stroke": null } }
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
 }
