@@ -1,0 +1,148 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 600,
+  "height": 350,
+  "data": [
+    {
+      "name": "table",
+      "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/visitorTrend.csv",
+      "format": { "type": "csv" },
+      "transform": [
+        {
+          "type": "formula",
+          "as": "expenditure",
+          "expr": "toNumber(datum.expenditure_millions) / 1000"
+        },
+        {
+          "type": "formula",
+          "as": "visitors",
+          "expr": "toNumber(datum.visitor_num_thousands) / 1000"
+        }
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "name": "hoverYear",
+      "value": null,
+      "on": [
+        { "events": "rect:mouseover", "update": "datum.year" },
+        { "events": "rect:mouseout", "update": "null" }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "xscale",
+      "type": "band",
+      "domain": { "data": "table", "field": "year" },
+      "range": "width",
+      "padding": 0.2,
+      "round": true
+    },
+    {
+      "name": "yscale1",
+      "type": "linear",
+      "domain": { "data": "table", "field": "expenditure" },
+      "range": "height",
+      "nice": true
+    },
+    {
+      "name": "yscale2",
+      "type": "linear",
+      "domain": { "data": "table", "field": "visitors" },
+      "range": "height",
+      "nice": true
+    }
+  ],
+  "axes": [
+    { "orient": "bottom", "scale": "xscale", "title": "Year" },
+    { "orient": "left", "scale": "yscale1", "title": "Expenditure (billions)" },
+    {
+      "orient": "right",
+      "scale": "yscale2",
+      "title": "Number of visitors (millions)",
+      "grid": false
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": { "data": "table" },
+      "encode": {
+        "enter": {
+          "x": { "scale": "xscale", "field": "year" },
+          "width": { "scale": "xscale", "band": 1 },
+          "y": { "scale": "yscale1", "field": "expenditure" },
+          "y2": { "scale": "yscale1", "value": 0 },
+          "tooltip": {
+            "signal": "{'Year': datum.year, 'Expenditure (billions)': format(datum.expenditure, '.1f'), 'Growth from Last Year (%)': format(datum.expenditure_percentage_change, '.1f')}"
+          }
+        },
+        "update": {
+          "fill": [
+            {
+              "test": "datum.year === hoverYear",
+              "value": "steelblue"
+            },
+            { "value": "#bbc4cc" }
+          ]
+        }
+      }
+    },
+    {
+      "type": "line",
+      "from": { "data": "table" },
+      "encode": {
+        "enter": {
+          "x": { "scale": "xscale", "field": "year", "band": 0.5 },
+          "y": { "scale": "yscale2", "field": "visitors" },
+          "stroke": { "value": "#c4a484" },
+          "strokeWidth": { "value": 2 }
+        }
+      }
+    },
+    {
+      "type": "symbol",
+      "from": { "data": "table" },
+      "encode": {
+        "enter": {
+          "x": { "scale": "xscale", "field": "year", "band": 0.5 },
+          "y": { "scale": "yscale2", "field": "visitors" },
+          "size": { "value": 100 }
+        },
+        "update": {
+          "fill": [
+            {
+              "test": "datum.year === hoverYear",
+              "value": "#997950"
+            },
+            { "value": "#c4a484" }
+          ]
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": { "data": "table" },
+      "encode": {
+        "enter": {
+          "x": { "scale": "xscale", "field": "year", "band": 0.5 },
+          "y": { "scale": "yscale1", "field": "expenditure", "offset": 20 },
+          "text": { "signal": "format(datum.expenditure, '.1f')" },
+          "align": { "value": "center" },
+          "baseline": { "value": "middle" }
+        },
+        "update": {
+          "fill": [
+            {
+              "test": "datum.year === hoverYear",
+              "value": "white"
+            },
+            { "value": "black" }
+          ]
+        }
+      }
+    }
+  ]
+}

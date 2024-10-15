@@ -14,7 +14,7 @@
   "encoding": {},
   "layer": [
     {
-      "mark": { "type": "line", "color": "#a9a9a9" },
+      "mark": { "type": "line", "color": "#c4a484" },
       "encoding": {
         "x": {
           "field": "year",
@@ -31,7 +31,7 @@
       }
     },
     {
-      "mark": { "type": "circle", "size": 100 },
+      "mark": { "type": "circle", "size": 100, "opacity":1 },
       "encoding": {
         "x": { "field": "year", "type": "nominal", "title": null },
         "y": { "field": "visitor_num_millions", "type": "quantitative" },
@@ -43,10 +43,10 @@
             },
             {
               "test": "datum['year'] == 2021",
-              "value": "steelblue"
+              "value": "#1135A7"
             }
           ],
-          "value": "#a9a9a9"
+          "value": "#c4a484"
         },
         "tooltip": [
           { "field": "year", "type": "nominal", "title": "Year" },
