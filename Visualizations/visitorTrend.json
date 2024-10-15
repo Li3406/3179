@@ -57,7 +57,7 @@
             "format": ",.1f"
           },
           {
-            "field": "percentage_change",
+            "field": "visitor_percentage_change",
             "type": "quantitative",
             "title": "Growth from Last Year (%)",
             "format": ",.1f"
