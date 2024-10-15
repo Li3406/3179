@@ -14,7 +14,7 @@
   "encoding": {},
   "layer": [
     {
-      "mark": {"type": "line", "color": "#a9a9a9"},
+      "mark": { "type": "line", "color": "#a9a9a9" },
       "encoding": {
         "x": {
           "field": "year",
@@ -36,13 +36,16 @@
         "x": { "field": "year", "type": "nominal", "title": null },
         "y": { "field": "visitor_num_millions", "type": "quantitative" },
         "color": {
-          "condition": [{
-            "test": "datum['year'] == 2020",
-            "value": "red"
-          }, {
-            "test": "datum['year'] == 2021",
-            "value": "steelblue"
-          }],
+          "condition": [
+            {
+              "test": "datum['year'] == 2020",
+              "value": "red"
+            },
+            {
+              "test": "datum['year'] == 2021",
+              "value": "steelblue"
+            }
+          ],
           "value": "#a9a9a9"
         },
         "tooltip": [
@@ -196,7 +199,7 @@
     {
       "mark": {
         "type": "text",
-        "fontWeight":"lighter",
+        "fontWeight": "lighter",
         "align": "left",
         "x": 500,
         "y": 250
@@ -215,20 +218,15 @@
     {
       "mark": {
         "type": "text",
-        "fontWeight":"normal",
-        "color":"steelblue",
+        "fontWeight": "normal",
+        "color": "steelblue",
         "align": "left",
         "x": 500,
         "y": 250
       },
       "encoding": {
         "text": {
-          "value": [
-            "",
-            "",
-            "freely within Malaysia",
-            ""
-          ]
+          "value": ["", "", "freely within Malaysia", ""]
         }
       }
     },

@@ -29,7 +29,11 @@
       "legend": { "orient": "bottom" }
     },
     "tooltip": [
-      { "field": "transport_mode", "type": "nominal", "title": "Transport Mode" },
+      {
+        "field": "transport_mode",
+        "type": "nominal",
+        "title": "Transport Mode"
+      },
       {
         "field": "visitor_percent",
         "type": "quantitative",
@@ -58,7 +62,7 @@
       "transform": [{ "filter": "datum['transport_mode'] == 'Taxi'" }]
     },
     {
-      "mark": { "type": "text", "radius": 180, "dx": 50},
+      "mark": { "type": "text", "radius": 180, "dx": 50 },
       "encoding": {
         "text": { "field": "transport_mode", "type": "nominal" },
         "color": { "value": "black" }
@@ -118,9 +122,9 @@
       "mark": "rule",
       "encoding": {
         "x": { "value": 275 },
-        "y": { "value": 65 }, 
+        "y": { "value": 65 },
         "x2": { "value": 295 },
-        "y2": { "value": 25 }, 
+        "y2": { "value": 25 },
         "color": { "value": "black" }
       }
     },
@@ -128,9 +132,9 @@
       "mark": "rule",
       "encoding": {
         "x": { "value": 220 },
-        "y": { "value": 65 }, 
+        "y": { "value": 65 },
         "x2": { "value": 200 },
-        "y2": { "value": 25 }, 
+        "y2": { "value": 25 },
         "color": { "value": "black" }
       }
     },
@@ -138,9 +142,9 @@
       "mark": "rule",
       "encoding": {
         "x": { "value": 365 },
-        "y": { "value": 325 }, 
+        "y": { "value": 325 },
         "x2": { "value": 330 },
-        "y2": { "value": 280 }, 
+        "y2": { "value": 280 },
         "color": { "value": "black" }
       }
     }
