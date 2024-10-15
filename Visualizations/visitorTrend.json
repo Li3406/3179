@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": "container",
-  "height": 300,
+  "width": 600,
+  "height": 350,
   "data": {
     "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/visitorTrend.csv"
   },
@@ -14,7 +14,7 @@
   "encoding": {},
   "layer": [
     {
-      "mark": "line",
+      "mark": {"type": "line", "color": "#a9a9a9"},
       "encoding": {
         "x": {
           "field": "year",
@@ -36,11 +36,14 @@
         "x": { "field": "year", "type": "nominal", "title": null },
         "y": { "field": "visitor_num_millions", "type": "quantitative" },
         "color": {
-          "condition": {
+          "condition": [{
             "test": "datum['year'] == 2020",
             "value": "red"
-          },
-          "value": "steelblue"
+          }, {
+            "test": "datum['year'] == 2021",
+            "value": "steelblue"
+          }],
+          "value": "#a9a9a9"
         },
         "tooltip": [
           { "field": "year", "type": "nominal", "title": "Year" },
@@ -70,7 +73,27 @@
         "y": { "field": "visitor_num_millions", "type": "quantitative" },
         "text": {
           "condition": {
-            "test": "datum['year'] == 2020 || datum['year'] == 2021 || datum['year'] == 2022",
+            "test": "datum['year'] == 2020",
+            "field": "visitor_num_millions",
+            "type": "quantitative",
+            "format": ".1f"
+          },
+          "value": ""
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": -23
+      },
+      "encoding": {
+        "x": { "field": "year", "type": "nominal" },
+        "y": { "field": "visitor_num_millions", "type": "quantitative" },
+        "text": {
+          "condition": {
+            "test": "datum['year'] == 2021 || datum['year'] == 2022",
             "field": "visitor_num_millions",
             "type": "quantitative",
             "format": ".1f"
@@ -103,8 +126,8 @@
       "mark": {
         "type": "text",
         "align": "left",
-        "dx": -90,
-        "dy": 75
+        "dx": -50,
+        "dy": 100
       },
       "encoding": {
         "x": { "field": "year", "type": "nominal" },
@@ -129,8 +152,8 @@
         "align": "right",
         "color": "red",
         "fontWeight": "bold",
-        "dx": -89,
-        "dy": -2
+        "dx": -91,
+        "dy": 10
       },
       "encoding": {
         "x": { "field": "year", "type": "nominal" },
@@ -154,8 +177,8 @@
         "height": 75
       },
       "encoding": {
-        "x": { "value": 100 },
-        "y": { "value": 170 }
+        "x": { "value": 190 },
+        "y": { "value": 210 }
       }
     },
     {
@@ -166,7 +189,7 @@
       "encoding": {
         "x": { "field": "year", "type": "nominal" },
         "y": { "field": "visitor_num_millions", "type": "quantitative" },
-        "x2": { "value": 170 }
+        "x2": { "value": 260 }
       },
       "transform": [{ "filter": "datum['year'] == 2020" }]
     },
@@ -175,8 +198,8 @@
         "type": "text",
         "fontWeight":"lighter",
         "align": "left",
-        "x": 90,
-        "y": 235
+        "x": 500,
+        "y": 250
       },
       "encoding": {
         "text": {
@@ -193,10 +216,10 @@
       "mark": {
         "type": "text",
         "fontWeight":"normal",
-        "color":"green",
+        "color":"steelblue",
         "align": "left",
-        "x": 90,
-        "y": 235
+        "x": 500,
+        "y": 250
       },
       "encoding": {
         "text": {
@@ -213,25 +236,25 @@
       "mark": {
         "type": "rect",
         "fill": null,
-        "stroke": "green",
+        "stroke": "steelblue",
         "strokeWidth": 1.5,
         "width": 170,
         "height": 70
       },
       "encoding": {
-        "x": { "value": 160 },
-        "y": { "value": 255 }
+        "x": { "value": 565 },
+        "y": { "value": 270 }
       }
     },
     {
       "mark": {
         "type": "rule",
-        "color": "green"
+        "color": "steelblue"
       },
       "encoding": {
         "x": { "field": "year", "type": "nominal" },
         "y": { "field": "visitor_num_millions", "type": "quantitative" },
-        "x2": { "value": 245 }
+        "x2": { "value": 480 }
       },
       "transform": [{ "filter": "datum['year'] == 2021" }]
     }

@@ -64,20 +64,31 @@
       <div class="pure-g">
         <div class="pure-u-1-1">
           <h2>Trends in Domestic Tourism (2016-2023)</h2>
+          <p>After a challenging few years impacted by the <strong>coronavirus disease</strong>, domestic tourism experienced a <strong>sharp recovery</strong>.</p>
+
         </div>
       </div>
+
 
       <div class="pure-g">
-        <div class="pure-u-2-3">
+        <div class="pure-u-1-1">
           <div id="vis2" class="vis-container"></div>
-        </div>
-        <div class="pure-u-1-3">
-          <div class="description description-right">
-            <p>After a challenging few years impacted by the coronavirus disease, domestic tourism experienced a <strong style="color: green;">sharp recovery</strong>.</p>
-          </div>
         </div>
       </div>
 
+            <!-- Mode of Transport -->
+            <div class="pure-g">
+              <div class="pure-u-1-1">
+                <h2>Mode of Transport</h2>
+              </div>
+            </div>
+      
+            <div class="pure-g">
+              <div class="pure-u-2-3">
+                <div id="vis3" class="vis-container"></div>
+              </div>
+            </div>
+      
       <!-- Expenditure -->
       <div class="pure-g">
         <div class="pure-u-1-1">
@@ -87,7 +98,7 @@
 
       <div class="pure-g">
         <div class="pure-u-1-1">
-          <div id="vis3" class="vis-container"></div>
+          <div id="vis6" class="vis-container"></div>
         </div>
       </div>
 
@@ -106,7 +117,11 @@
 <script type="text/javascript">
   var specVis1 = "./Visualizations/choropleth.json";
   var specVis2 = "./Visualizations/visitorTrend.json";
-  var specVis3 = "./Visualizations/expenditure.json";
+  var specVis3 = "./Visualizations/transportModeVisitor.json";
+  var specVis4 = "./Visualizations/transportModeExcursionist.json";
+  var specVis5 = "./Visualizations/transportModeTourist.json";
+
+  var specVis6 = "./Visualizations/expenditure.json";
 
   vegaEmbed("#vis1", specVis1, { actions: false })
     .then(function (result) {
@@ -125,4 +140,21 @@
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     })
     .catch(console.error);
+    vegaEmbed("#vis4", specVis4, { actions: false })
+    .then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    })
+    .catch(console.error);
+    vegaEmbed("#vis5", specVis5, { actions: false })
+    .then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    })
+    .catch(console.error);
+
+    vegaEmbed("#vis6", specVis6, { actions: false })
+    .then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    })
+    .catch(console.error);
+
 </script>

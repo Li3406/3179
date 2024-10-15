@@ -1,0 +1,153 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/transportMode.csv"
+  },
+  "encoding": {
+    "theta": {
+      "field": "visitor_percent",
+      "type": "quantitative",
+      "stack": true
+    },
+    "color": {
+      "field": "transport_mode",
+      "title": "Mode of Transport",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Private vehicles", "Taxi", "Bus", "Train", "Air", "Water"],
+        "range": [
+          "#e66c2c",
+          "#fdd017",
+          "#ffa500",
+          "#997950",
+          "#324ab2",
+          "#d3d3d3"
+        ]
+      },
+      "legend": { "orient": "bottom" }
+    },
+    "tooltip": [
+      { "field": "transport_mode", "type": "nominal", "title": "Transport Mode" },
+      {
+        "field": "visitor_percent",
+        "type": "quantitative",
+        "title": "Visitor Percentage (%)"
+      }
+    ]
+  },
+  "layer": [
+    { "mark": { "type": "arc", "innerRadius": 60, "outerRadius": 150 } },
+    {
+      "mark": { "type": "text", "radius": 150, "dx": 90 },
+      "encoding": {
+        "text": { "field": "transport_mode", "type": "nominal" },
+        "color": { "value": "black" }
+      },
+      "transform": [
+        { "filter": "datum['transport_mode'] == 'Private vehicles'" }
+      ]
+    },
+    {
+      "mark": { "type": "text", "radius": 180, "dx": -90 },
+      "encoding": {
+        "text": { "field": "transport_mode", "type": "nominal" },
+        "color": { "value": "black" }
+      },
+      "transform": [{ "filter": "datum['transport_mode'] == 'Taxi'" }]
+    },
+    {
+      "mark": { "type": "text", "radius": 180, "dx": 50},
+      "encoding": {
+        "text": { "field": "transport_mode", "type": "nominal" },
+        "color": { "value": "black" }
+      },
+      "transform": [{ "filter": "datum['transport_mode'] == 'Bus'" }]
+    },
+
+    {
+      "mark": { "type": "text", "radius": 170, "dx": 65, "fontSize": 15 },
+      "encoding": {
+        "text": { "field": "visitor_percent_formatted", "type": "nominal" },
+        "color": { "value": "black" }
+      },
+      "transform": [
+        {
+          "filter": "datum['transport_mode'] == 'Private vehicles'"
+        },
+        {
+          "calculate": "datum['visitor_percent'] + '%'",
+          "as": "visitor_percent_formatted"
+        }
+      ]
+    },
+    {
+      "mark": { "type": "text", "radius": 160, "dx": -92, "fontSize": 15 },
+      "encoding": {
+        "text": { "field": "visitor_percent_formatted", "type": "nominal" },
+        "color": { "value": "black" }
+      },
+      "transform": [
+        {
+          "filter": "datum['transport_mode'] == 'Taxi'"
+        },
+        {
+          "calculate": "datum['visitor_percent'] + '%'",
+          "as": "visitor_percent_formatted"
+        }
+      ]
+    },
+    {
+      "mark": { "type": "text", "radius": 160, "dx": 58, "fontSize": 15 },
+      "encoding": {
+        "text": { "field": "visitor_percent_formatted", "type": "nominal" },
+        "color": { "value": "black" }
+      },
+      "transform": [
+        {
+          "filter": "datum['transport_mode'] == 'Bus'"
+        },
+        {
+          "calculate": "datum['visitor_percent'] + '%'",
+          "as": "visitor_percent_formatted"
+        }
+      ]
+    },
+    {
+      "mark": "rule",
+      "encoding": {
+        "x": { "value": 275 },
+        "y": { "value": 65 }, 
+        "x2": { "value": 295 },
+        "y2": { "value": 25 }, 
+        "color": { "value": "black" }
+      }
+    },
+    {
+      "mark": "rule",
+      "encoding": {
+        "x": { "value": 220 },
+        "y": { "value": 65 }, 
+        "x2": { "value": 200 },
+        "y2": { "value": 25 }, 
+        "color": { "value": "black" }
+      }
+    },
+    {
+      "mark": "rule",
+      "encoding": {
+        "x": { "value": 365 },
+        "y": { "value": 325 }, 
+        "x2": { "value": 330 },
+        "y2": { "value": 280 }, 
+        "color": { "value": "black" }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

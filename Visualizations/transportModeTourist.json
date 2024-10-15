@@ -1,0 +1,75 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Tourist"},
+    "width": "container",
+    "height": 300,
+    "data": {
+      "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/transportMode.csv"
+    },
+    "encoding": {
+      "theta": {
+        "field": "tourist_percent",
+        "type": "quantitative",
+        "stack": true
+      },
+      "color": {
+        "field": "transport_mode",
+        "title": "Mode of Transport",
+        "type": "nominal",
+        "scale": {
+          "domain": ["Private vehicles", "Taxi", "Bus", "Train", "Air", "Water"],
+          "range": [
+            "#e66c2c",
+            "#fdd017",
+            "#ffa500",
+            "#997950",
+            "#324ab2",
+            "#d3d3d3"
+          ]
+        },
+        "legend":null
+      },
+      "tooltip": [
+        {"field": "transport_mode", "type": "nominal", "title": "Mode:"},
+        {
+          "field": "tourist_percent",
+          "type": "quantitative",
+          "title": "Percentage"
+        }
+      ]
+    },
+    "layer": [
+      {"mark": {"type": "arc", "innerRadius": 40, "outerRadius": 80}},
+      {
+        "mark": {"type": "text", "radius": 100, "dx": -10},
+        "encoding": {
+          "text": {"field": "transport_mode", "type": "nominal"},
+          "color": {"value": "black"}
+        },
+        "transform": [{"filter": "datum['transport_mode'] == 'Private vehicles'"}]
+      },
+          {
+        "mark": {"type": "text", "radius": 100},
+        "encoding": {
+          "text": {"field": "tourist_percent_formatted", "type": "nominal"},
+          "color": {"value": "black"}
+        },
+  "transform": [
+      {
+        "filter": "datum['transport_mode'] == 'Private vehicles'"
+      },
+      {
+        "calculate": "datum['tourist_percent'] + '%'",
+        "as": "tourist_percent_formatted"
+      }
+    ]
+      }
+  
+    ],
+    "config": {
+        "view": {
+          "stroke": null
+        }
+      }
+    
+  }
