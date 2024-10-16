@@ -5,77 +5,101 @@
   "data": {
     "url": "https://raw.githubusercontent.com/Li3406/3179/main/Data/Extracted%20Data/expenditure.csv"
   },
-
-  "mark": {
-    "type": "text",
-    "align": "center",
-    "baseline": "middle",
-    "fontSize": 25
-  },
-  "encoding": {
-    "x": {
-      "field": "icon_pos",
-      "type": "quantitative",
-      "axis": { "title": "1 icon = 300,000,000 units", "domain": false, "labels": false, "ticks":false, "grid": false},
-      "stack": null
+  "transform": [
+    {
+      "calculate": "datum['expenditure_2023'] / 1000000",
+      "as": "expenditure_2023"
     },
-    "y": {
-      "field": "visitor_expenditure",
-      "type": "nominal",
-      "axis": { "title": null, "domain": false, "labelLimit": 300 },
-      "sort": [
-        "Shopping",
-        "Accommodation",
-        "Food & beverage",
-        "Transport",
-        "Purchase of automotive fuel ",
-        "Expenditure before the trip/ package/ entrance fees/ tickets",
-        "Other activities"
-      ]
-    },
-    "text": {
-      "condition": [
-        { "test": "datum.visitor_expenditure === 'Shopping'", "value": "🛒" },
-        {
-          "test": "datum.visitor_expenditure === 'Accommodation'",
-          "value": "🏠"
-        },
-        {
-          "test": "datum.visitor_expenditure === 'Food & beverage'",
-          "value": "🍽️"
-        },
-        { "test": "datum.visitor_expenditure === 'Transport'", "value": "🚗" },
-        {
-          "test": "datum.visitor_expenditure === 'Purchase of automotive fuel '",
-          "value": "⛽"
-        },
-        {
-          "test": "datum.visitor_expenditure === 'Expenditure before the trip/ package/ entrance fees/ tickets'",
-          "value": "🎫"
-        }
-      ],
-      "value": "⚫"
-    },
-    "tooltip": [
-      {
-        "field": "visitor_expenditure",
-        "type": "nominal",
-        "title": "Category"
+    {
+      "calculate": "round(datum['expenditure_2023'] / 3)",
+      "as": "icon_count"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 25
       },
-      {
-        "field": "expenditure_2022",
-        "type": "quantitative",
-        "title": "Expenditure 2022 ('000)",
-        "format": ",.0f"
-      },
-      {
-        "field": "expenditure_2023",
-        "type": "quantitative",
-        "title": "Expenditure 2023 ('000)",
-        "format": ",.0f"
+      "encoding": {
+        "x": {
+          "field": "icon_pos",
+          "type": "quantitative",
+          "axis": {
+            "title": "1 icon = 300,000,000 units",
+            "domain": false,
+            "labels": false,
+            "ticks": false,
+            "grid": false
+          },
+          "stack": null
+        },
+        "y": {
+          "field": "visitor_expenditure",
+          "type": "nominal",
+          "axis": {
+            "title": null,
+            "domain": false,
+            "labelLimit": 300,
+            "ticks": false,
+            "labelFontSize": 12
+          },
+          "sort": [
+            "Shopping",
+            "Accommodation",
+            "Food & beverage",
+            "Transport",
+            "Purchase of automotive fuel ",
+            "Pre-trip expenditure/tickets",
+            "Other activities"
+          ]
+        },
+        "text": {
+          "value": " 💰"
+        },
+        "tooltip": [
+          {
+            "field": "visitor_expenditure",
+            "type": "nominal",
+            "title": "Category"
+          },
+          {
+            "field": "expenditure_2023",
+            "type": "quantitative",
+            "title": "Expenditure (billions)",
+            "format": ",.1f"
+          }
+        ]
       }
-    ]
-  },
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 30,
+        "dy": 2
+      },
+      "encoding": {
+        "x": {
+          "aggregate": "max",
+          "field": "icon_pos",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "visitor_expenditure",
+          "type": "nominal"
+        },
+        "text": {
+          "field": "icon_count",
+          "type": "quantitative",
+          "format": ","
+        }
+      }
+    }
+  ],
   "config": {
     "view": {
       "stroke": null
