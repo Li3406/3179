@@ -28,7 +28,7 @@
           "field": "icon_pos",
           "type": "quantitative",
           "axis": {
-            "title": "1 icon = 300,000,000 units",
+            "title": "1 icon = 3 billion ringgit",
             "domain": false,
             "labels": false,
             "ticks": false,
@@ -52,7 +52,7 @@
             "Food & beverage",
             "Transport",
             "Purchase of automotive fuel ",
-            "Pre-trip expenditure/tickets",
+            "Pre-trip expenditure/package/tickets",
             "Other activities"
           ]
         },
