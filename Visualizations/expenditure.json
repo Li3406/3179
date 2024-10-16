@@ -90,7 +90,16 @@
         },
         "y": {
           "field": "visitor_expenditure",
-          "type": "nominal"
+          "type": "nominal",
+          "sort": [
+            "Shopping",
+            "Accommodation",
+            "Food & beverage",
+            "Transport",
+            "Purchase of automotive fuel ",
+            "Pre-trip expenditure/package/tickets",
+            "Other activities"
+          ]
         },
         "text": {
           "field": "icon_count",
